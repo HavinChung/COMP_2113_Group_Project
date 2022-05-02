@@ -14,7 +14,7 @@ __Login required and choices are given:__
 
 > "You need to defeat the Boss monster by answering the questions."
 
-__Boss have 25 HP and every time you answer correctly:__ <br/>
+__Boss have 20 HP and every time you answer correctly:__ <br/>
 - HP: -5 & Score: +100 points
 
 __Each boss would give you 5 questions based on specific field of study (Time limit: 1.5mins)__
@@ -53,15 +53,35 @@ __Rewards:__
 
 ## File Content:
 - cpp file for main menu and main game
-- cpp file that contains functions for the game with questions and town part
-- cpp file for leaderboard
-- txt file save the progress (name, score, round, personal info)
+- cpp file in game (fight, town, HP system)
+- cpp file for pregame (Load, Save, Continue, Leaderboard)
+- txt files save the progress (name, score, round, personal info)
 - make file
 - header file
 
 ## Code Requirement:
 1) Random generation: choosing random questions from 20 questions per round
 2) Gaming status: save progress in txt file use <fstream>
-3) The score and user ID will be stored in leaderboard.cpp and store in linked list
-4) Save to txt file, the progress round, no. of items in text, score, players id and pw
-5) Three C++ programs, one txt file, one header file and one make file
+3) The score and user ID will be stored in leaderboard.txt
+4) Save to txt file, the progress round, no. of items in text, score, players id
+5) Three C++ programs, four txt files, one header file and one make file
+
+## Files:
+
+introduction.txt
+
+user_status.txt
+
+user_items.txt
+
+leaderboard.txt
+
+inGame.cpp
+inGame.h
+
+main.cpp
+
+preGame.cpp
+preGame.h
+
+Makefile
