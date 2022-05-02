@@ -86,7 +86,7 @@ Makefile
   
 ## Functions:
 
-inGame.cpp
+__inGame.cpp__
 - void save_quit
 - void read_questions (read from txt file in random)
 - void read_answer
@@ -97,7 +97,7 @@ inGame.cpp
 - bool win (if counter == 4, game win)
 - bool die (if hp == 0, return shop)
   
-preGame.cpp
+__preGame.cpp__
 - void write_file
 - void read_file (read status of user)
 - void begin (Introduction and Ask user to continue from previous or not)
