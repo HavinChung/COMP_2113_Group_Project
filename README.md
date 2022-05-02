@@ -14,10 +14,10 @@ __Login required and choices are given:__
 
 > "You need to defeat the Boss monster by answering the questions."
 
-__Boss have 20 HP and every time you answer correctly:__ <br/>
+__Boss have 25 HP and every time you answer correctly:__ <br/>
 - HP: -5 & Score: +100 points
 
-__Each boss would give you 5 questions based on specific field of study (Time limit: 1.5mins)__
+__Each boss would give you 5 questions based on specific field of study__
 1) Math
 2) Comp
 3) History
@@ -33,10 +33,8 @@ __HP system:__
 - If HP get to 0 start from town and redo the round you failed
 
 __Items:__
-1) Hints (Keys)
-2) Skip question (replace one with another question)
-3) Healing potion (Heal 5 HP)
-4) Shield (Shield the damage from the boss)
+1) Skip question (replace one with another question)
+2) Healing potion (Heal 5 HP)
 
 __Every round you have two choices: (need to be done in 1.5 mins)__
 1) Answer questions
@@ -60,28 +58,44 @@ __Rewards:__
 - header file
 
 ## Code Requirement:
-1) Random generation: choosing random questions from 20 questions per round
+1) Random generation: choosing random questions from 40 questions per round
 2) Gaming status: save progress in txt file use <fstream>
-3) The score and user ID will be stored in leaderboard.txt
-4) Save to txt file, the progress round, no. of items in text, score, players id
+3) The score and and will be stored in user_status.txt
+4) Save to txt file, the progress round, no. of items in text, score
 5) Three C++ programs, four txt files, one header file and one make file
 
 ## Files:
 
 introduction.txt
 
+monster.txt
+  
 user_status.txt
 
-user_items.txt
-
-leaderboard.txt
-
-inGame.cpp
-inGame.h
+inGame.cpp, inGame.h
 
 main.cpp
 
-preGame.cpp
-preGame.h
+preGame.cpp, preGame.h
 
 Makefile
+  
+## Functions:
+
+inGame.cpp
+- void save_quit
+- void questions (read from txt file)
+- bool fight (whether answered correct or not)
+- void display_status (display hp, items, and coins)
+- void shop (display coins, items, price of items, hp, go to next round)
+- void useItem
+- bool win (if counter == 4, game win)
+- bool die (if hp == 0, return shop)
+  
+preGame.cpp
+- void write_file
+- void read_file (read status of user)
+- void begin (Introduction and Ask user to continue from previous or not)
+- struct Status initialize_user (HP, items, coins)
+- struct Status initialize_monster (HP)
+- void exit
