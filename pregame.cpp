@@ -14,3 +14,7 @@ void begin(){
 void exit(){
 
 }
+struct user_status{
+    int HP;
+    int num_of_coins;
+    int num_of_
