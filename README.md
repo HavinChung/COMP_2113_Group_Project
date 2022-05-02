@@ -70,6 +70,10 @@ introduction.txt
 
 monster.txt
   
+question.txt
+
+answer.txt
+  
 user_status.txt
 
 inGame.cpp, inGame.h
@@ -84,7 +88,8 @@ Makefile
 
 inGame.cpp
 - void save_quit
-- void questions (read from txt file)
+- void read_questions (read from txt file in random)
+- void read_answer
 - bool fight (whether answered correct or not)
 - void display_status (display hp, items, and coins)
 - void shop (display coins, items, price of items, hp, go to next round)
