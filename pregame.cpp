@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "ingame.h"
 
 using namespace std;
 
@@ -24,6 +25,8 @@ void begin_new_game(){
     cout << "Your number of magic power: " << num_of_magic_power << endl;
     cout << "Your number of potion: "<< num_of_potion << endl;
     cout << "Monster HP: " << monster_hp << endl;
+
+    shop();
 }
 
 void continue_game(){
@@ -37,6 +40,8 @@ void continue_game(){
     cout << "Your number of magic power: " << num_of_magic_power << endl;
     cout << "Your number of potion: "<< num_of_potion << endl;
     cout << "Monster HP: " << monster_hp << endl;
+
+    shop();
 }
 void exit_1(){
     cout << "Your status has been saved, see you next time!!!";
@@ -46,32 +51,3 @@ void exit_1(){
     fin.close();
 }
 
-
-
-
-int main(){
-    cout << "Welcome to the spinx game" << endl;
-    cout << "what would you like to do?" << endl;
-    cout << "1. Start a new game!"<< endl;
-    cout << "2. Purchase some items!"<< endl;
-    cout << "3. To exit the game."<< endl;
-    cout << "Please enter you choice.(1/2/3) "<< endl;
-char choice;
-cin >> choice;
-while(choice != '1' && choice != '2' && choice != '3'){
-  cout << "Invalid input! please indicate your choice again!" << endl;
-  cin >> choice;
-}
-if (choice == '1'){
-    begin_new_game();
-}
-else if(choice == '2'){
-    continue_game();
-}
-else if(choice == '3'){
-    exit_1();
-}
-
-return 0;
-
-}

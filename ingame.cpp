@@ -3,20 +3,28 @@
 #include <fstream>
 #include <random>
 #include <ctime>
-#include "ingame.h"
+#include "pregame.h"
 
 using namespace std;
 
-int round = 0;
-int hp = 20;
-int num_of_coins = 0;
-int num_of_magic_power = 0;
-int num_of_potion = 0;
-int monster_hp = 100;
+int rounds = 0;
 int* question_no = new int[50];
 int counter = 0;
 
-string read_file(string textfile,int rand){
+string read_file(string textfile,int rand);
+void save();
+void user_status();
+void monster_status();
+void reset_status();
+int random_num();
+bool attack();
+void shop();
+void die();
+void win();
+void victory();
+void battle();
+
+string read_file(string textfile, int rand){
     ifstream file (textfile);
     string line;
 
@@ -46,6 +54,7 @@ void user_status(){
     cout << "HP: " << hp << endl;
     cout << "Potions: " << num_of_potion << endl;
     cout << "Coins: " << num_of_coins << endl;
+    cout << "Round " << rounds+1 << endl;
 }
 
 void monster_status(){
@@ -91,7 +100,7 @@ bool attack(){
     do{
         for(int i = 0; i < counter; i++){
             if (question_no[i] == num){
-                found == true;
+                found = true;
             }
         }
         num = random_num();
@@ -122,10 +131,11 @@ void shop(){
     reset_status();
     cout << "Hello Adventurer! Welcome to the town!" << endl;
     cout << "Please choose from options below: (Enter a Number)" << endl;
-    cout << "| 1. Go to Next Round         |" << endl;
+    cout << "| 1. Start Adventure          |" << endl;
     cout << "| 2. Buy Potion (1 coin)      |" << endl;
     cout << "| 3. Buy Magic Power (1 coin) |" << endl;
     cout << "| 4. Save Game                |" << endl;
+    cout << "| 5. Save and Exit            |" << endl;
 
     cin >> option;
 
@@ -134,11 +144,11 @@ void shop(){
     }
 
     if (option == "2"){
-        if (coin == 0){
+        if (num_of_coins == 0){
             cout << "Not Enough Coin!!" << endl;
             shop();
         }
-        if (coin > 0){
+        if (num_of_coins > 0){
             cout << "Purchase Successful" << endl;
             num_of_coins -= 1;
             num_of_potion += 1;
@@ -148,11 +158,11 @@ void shop(){
     }
     
     if (option == "3"){
-        if (coin == 0){
+        if (num_of_coins == 0){
             cout << "Not Enough Coin!!" << endl;
             shop();
         }
-        if (coin > 0){
+        if (num_of_coins > 0){
             cout << "Purchase Successful" << endl;
             num_of_coins -= 1;
             num_of_magic_power += 1;
@@ -163,6 +173,14 @@ void shop(){
 
     if (option == "4"){
         save();
+        shop();
+    }
+    
+    if (option == "5"){
+        exit_1();
+    }
+
+    else{
         shop();
     }
 
@@ -178,8 +196,15 @@ void win(){
     cout << "Conguratulation! You have slained the monster!" << endl;
     cout << "Returning to the town..." << endl;
     num_of_coins += 1;
-    round += 1;
-    shop();
+    rounds += 1;
+
+    if (rounds == 5){
+        victory();
+    }
+
+    else{
+        shop();
+    }
 
 }
 
@@ -188,7 +213,7 @@ void victory(){
 }
 
 void battle(){
-    if (round < 5){
+    if (rounds < 5){
         while (hp != 0 && monster_hp != 0){
             if (attack() == true){
                 cout << "Attack was Successful!" << endl;
@@ -209,11 +234,7 @@ void battle(){
 
         if (monster_hp == 0){
             win();
-            round++;
+            rounds++;
         }
-    }
-
-    if (round == 5){
-        victory();
     }
 }
