@@ -12,6 +12,7 @@ int main(){
     cout << "2. Load Game"<< endl;
     cout << "3. Exit the game."<< endl;
     cout << "Please enter you choice.(1/2/3) "<< endl;
+    cout << endl;
 
     char choice;
     cin >> choice;

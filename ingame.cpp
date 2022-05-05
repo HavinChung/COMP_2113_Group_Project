@@ -31,13 +31,11 @@ string read_file(string textfile, int rand){
     if (file.is_open()){
         for (int i = 1; getline(file, line) && i < rand+1; i++){
             if (i == rand){
-                break;
+                file.close();
+                return line;
             }
         }
     }
-
-    file.close();
-    return line;
 }
 
 void save(){
@@ -54,7 +52,7 @@ void user_status(){
     cout << "HP: " << hp << endl;
     cout << "Potions: " << num_of_potion << endl;
     cout << "Coins: " << num_of_coins << endl;
-    cout << "Round " << rounds+1 << endl;
+    cout << "Round: " << rounds+1 << endl;
 }
 
 void monster_status(){
@@ -134,8 +132,8 @@ void shop(){
     cout << "| 1. Start Adventure          |" << endl;
     cout << "| 2. Buy Potion (1 coin)      |" << endl;
     cout << "| 3. Buy Magic Power (1 coin) |" << endl;
-    cout << "| 4. Save Game                |" << endl;
-    cout << "| 5. Save and Exit            |" << endl;
+    cout << "| 4. Save and Exit            |" << endl;
+    cout << endl;
 
     cin >> option;
 
@@ -172,29 +170,29 @@ void shop(){
     }
 
     if (option == "4"){
-        save();
-        shop();
-    }
-    
-    if (option == "5"){
         exit_1();
     }
 
-    else{
+    if(option != "1" && option != "2" && option != "3" && option != "4" ){
+        cout << "Invalid Choice" << endl;
         shop();
     }
 
 }
 
 void die(){
+    cout << endl;
     cout << "The player have slained by the monster!" << endl;
     cout << "Returning to the town..." << endl;
+    cout << endl;
     shop();
 }
 
 void win(){
+    cout << endl;
     cout << "Conguratulation! You have slained the monster!" << endl;
     cout << "Returning to the town..." << endl;
+    cout << endl;
     num_of_coins += 1;
     rounds += 1;
 
