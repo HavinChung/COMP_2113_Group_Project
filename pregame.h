@@ -4,7 +4,6 @@
 
 extern int hp;
 extern int num_of_coins;
-extern int num_of_magic_power;
 extern int num_of_potion;
 extern int monster_hp;
 

@@ -8,41 +8,57 @@
 using namespace std;
 
 int rounds = 0;
-int* question_no = new int[50];
-int counter = 0;
+string* question = new string[50];
+string* answer = new string[50];
 
-string read_file(string textfile,int rand);
+void initialize_question();
+void initialize_answer();
 void save();
 void user_status();
 void monster_status();
 void reset_status();
 int random_num();
-bool attack();
+void attack();
 void shop();
 void die();
 void win();
 void victory();
+void options();
 void battle();
 
-string read_file(string textfile, int rand){
-    ifstream file (textfile);
-    string line;
+void initialize_question(){
+    ifstream file ("Question.txt");
 
     if (file.is_open()){
-        for (int i = 1; getline(file, line) && i < rand+1; i++){
-            if (i == rand){
-                file.close();
-                return line;
-            }
+        string line;
+        int i = 0;
+        while (getline(file, line)){
+            question[i] = line;
+            i++;
         }
     }
+    file.close();
+}
+
+void initialize_answer(){
+    ifstream file ("Answer.txt");
+
+    if (file.is_open()){
+        string line;
+        int i = 0;
+        while (getline(file, line)){
+            answer[i] = line;
+            i++;
+        }
+    }
+    file.close();
 }
 
 void save(){
     ofstream file("user_status.txt");
 
     if (file.is_open()){
-        file << hp << " " << num_of_coins << " " << num_of_magic_power << " " << num_of_potion << " " << monster_hp;
+        file << hp << " " << num_of_coins << " " << num_of_potion << " " << monster_hp;
     }
 
     file.close();
@@ -90,37 +106,40 @@ int random_num(){
     return num;
 }
 
-bool attack(){
-    string user_input;
+void attack(){
     int num = random_num();
-    bool found;
-    
-    do{
-        for(int i = 0; i < counter; i++){
-            if (question_no[i] == num){
-                found = true;
-            }
+    string user_input;
+
+    while (question[num] == " "){
+        int num = random_num();
+    }
+
+    if (question[num] != " "){
+        cout << question[num] << endl;
+        cout << "Answer: " << endl;
+        cin >> user_input;
+
+        if (user_input == answer[num]){
+            question[num] = " ";
+            answer[num] = " ";
+            cout << "Correct!" << endl;
+            cout << "Attack the monster!! (-20)" << endl;
+            monster_hp -= 20;
+
         }
-        num = random_num();
 
-    } while (found != false);
+        if (user_input != answer[num]){
+            cout << "Wrong Answer!" << endl;
+            cout << "Monster have attacked you!! (-5)" << endl;
+            hp -= 5;
+        }
 
-    string question = read_file("Question.txt", num);
-    string answer = read_file("Answer.txt", num);
-
-    cout << question << endl;
-    cin >> user_input;
-
-
-    if (user_input == answer){
-        question_no[counter] = num;
-        counter++;
-        return true;
+        if (user_input == "Skip"){
+            attack();
+        }
     }
 
-    else{
-        return false;
-    }
+
 }
 
 void shop(){
@@ -131,8 +150,7 @@ void shop(){
     cout << "Please choose from options below: (Enter a Number)" << endl;
     cout << "| 1. Start Adventure          |" << endl;
     cout << "| 2. Buy Potion (1 coin)      |" << endl;
-    cout << "| 3. Buy Magic Power (1 coin) |" << endl;
-    cout << "| 4. Save and Exit            |" << endl;
+    cout << "| 3. Save and Exit            |" << endl;
     cout << endl;
 
     cin >> option;
@@ -154,30 +172,28 @@ void shop(){
             shop();
         }
     }
-    
-    if (option == "3"){
-        if (num_of_coins == 0){
-            cout << "Not Enough Coin!!" << endl;
-            shop();
-        }
-        if (num_of_coins > 0){
-            cout << "Purchase Successful" << endl;
-            num_of_coins -= 1;
-            num_of_magic_power += 1;
-            cout << "Number of Magic Power: " << num_of_magic_power << endl;
-            shop();
-        }
-    }
 
-    if (option == "4"){
+    if (option == "3"){
         exit_1();
     }
 
-    if(option != "1" && option != "2" && option != "3" && option != "4" ){
+    if(option != "1" && option != "2" && option != "3"){
         cout << "Invalid Choice" << endl;
         shop();
     }
 
+}
+
+void use_potion(){
+    if (num_of_potion > 0){
+        cout << "Healed 5 hp" << endl;
+        hp += 5;
+        num_of_potion--;
+    }
+
+    if (num_of_potion == 0){
+        cout << "Not enough potion!!" << endl;
+    }
 }
 
 void die(){
@@ -210,20 +226,33 @@ void victory(){
     cout << "VICTORY!!!" << endl;
 }
 
+void options(){
+    string input;
+    cout << "Please choose from options below: (Enter a Number)" << endl;
+    cout << "| 1. Attack                   |" << endl;
+    cout << "| 2. Use Potion               |" << endl;
+    cout << "| 3. Save and Exit            |" << endl;
+
+    cin >> input;
+
+    if (input == "1"){
+        attack();
+    }
+
+    if (input == "2"){
+        use_potion();
+    }
+
+    if (input == "3"){
+        exit_1();
+    }
+}
+
 void battle(){
     if (rounds < 5){
+        cout << "You have encountered the Sphinx" << endl;
         while (hp != 0 && monster_hp != 0){
-            if (attack() == true){
-                cout << "Attack was Successful!" << endl;
-                monster_hp -= 25;
-            }
-            if (attack() == false){
-                cout << "Monster attacked you! (x_x)" << endl;
-                hp -= 5;
-            }
-
-            user_status();
-            monster_status();
+            options();
         }
 
         if (hp == 0){

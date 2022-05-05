@@ -1,11 +1,22 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "pregame.h"
 #include "ingame.h"
 
 using namespace std;
 
 int main(){
+    ifstream monster_file ("monster.txt");
+
+    if (monster_file.is_open()){
+        string line;
+        while (getline(monster_file, line)){
+            cout << line << endl;
+        }
+    }
+
+
     cout << "Welcome to the spinx game" << endl;
     cout << "what would you like to do?" << endl;
     cout << "1. Start a new game!"<< endl;
