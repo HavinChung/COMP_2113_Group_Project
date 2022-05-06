@@ -32,13 +32,16 @@ void save(){
 }
 
 void user_status(){
+    cout << endl;
     cout << "HP: " << hp << endl;
     cout << "Potions: " << num_of_potion << endl;
     cout << "Coins: " << num_of_coins << endl;
     cout << "Round: " << rounds+1 << endl;
+    cout << endl;
 }
 
 void monster_status(){
+    cout << endl;
     cout << "Monster HP: " << monster_hp <<endl;
     if (monster_hp == 100){
         cout << "[oooo|oooo|oooo|oooo]" << endl;
@@ -56,6 +59,7 @@ void monster_status(){
         cout << "[----|----|----|----]" << endl;
         cout << "Sphinx: You....Killed....Me" << endl;
     }  
+    cout << endl;
 }
 
 void reset_status(){
@@ -79,24 +83,28 @@ void attack(){
         cout << "Answer: " << endl;
         cin >> user_input;
 
-        if (user_input == answer[num]){
+        if (user_input == "Skip"){
+            cout << endl;
+            attack();
+        }
+
+        else if (user_input == answer[num]){
             question[num] = " ";
             answer[num] = " ";
             cout << "Correct!" << endl;
-            cout << "Attack the monster!! (-20)" << endl;
-            monster_hp -= 20;
-
+            cout << "Attack the monster!! (-25)" << endl;
+            monster_hp -= 25;
+            cout << endl;
         }
 
-        if (user_input != answer[num]){
+        else if (user_input != answer[num]){
             cout << "Wrong Answer!" << endl;
             cout << "Monster have attacked you!! (-5)" << endl;
             hp -= 5;
+            cout << endl;
         }
 
-        if (user_input == "Skip"){
-            attack();
-        }
+
     }
 
 
@@ -106,6 +114,7 @@ void shop(){
     string option;
 
     reset_status();
+    cout << endl;
     cout << "Hello Adventurer! Welcome to the town!" << endl;
     cout << "Please choose from options below: (Enter a Number)" << endl;
     cout << "| 1. Start Adventure          |" << endl;
@@ -191,14 +200,17 @@ void battle(){
     if (rounds < 5){
         cout << "You have encountered the Sphinx" << endl;
         while (hp != 0 && monster_hp != 0){
+            cout << endl;
             cout << "Please choose from options below: (Enter a Number)" << endl;
             cout << "| 1. Attack                   |" << endl;
             cout << "| 2. Use Potion               |" << endl;
             cout << "| 3. Save and Exit            |" << endl;
+            cout << endl;
             string input;
             cin >> input;
 
             if (input == "1"){
+                cout << "Please enter 'Skip' if you want to skip the question!" << endl;
                 attack();
             }
 

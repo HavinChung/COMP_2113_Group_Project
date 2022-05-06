@@ -19,6 +19,10 @@ int main(){
 
 
     cout << "Welcome to the spinx game" << endl;
+    cout << "Introduction:" << endl;
+    cout << "You need to kill the Sphinx by solving question!!" << endl;
+    cout << "All answers need to start with captial letter!!" << endl;
+    cout << endl;
     cout << "what would you like to do?" << endl;
     cout << "1. Start a new game!"<< endl;
     cout << "2. Load Game"<< endl;
