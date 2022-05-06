@@ -17,7 +17,7 @@ __Login required and choices are given:__
 __Boss have 25 HP and every time you answer correctly:__ <br/>
 - HP: -5
 
-__Each boss would give you 5 questions based on specific field of study__
+__The boss would give you 5 questions based on specific field of study in order__
 1) Math
 2) Comp
 3) History
@@ -36,18 +36,18 @@ __HP system:__
 __Items:__
 1) Healing potion (Heal 5 HP)
 
-__Every round you have two choices: (need to be done in 1.5 mins)__
+__Every round you have three choices:
 1) Answer questions
 2) Use item
+3) exit and save
 
 __Town:__
-1) Heal to 20 HP for Free
-2) Buy item
-3) Save progress
+1) Buy item
+2) Save progress
 
 __Rewards:__
 1) Well done trophy
-2) Score
+2) Victory
 
 ## File Content:
 - cpp file for main menu and main game
@@ -98,9 +98,6 @@ __inGame.cpp__
 - bool die (if hp == 0, return shop)
   
 __preGame.cpp__
-- void write_file
-- void read_file (read status of user)
-- void begin (Introduction and Ask user to continue from previous or not)
-- struct Status initialize_user (HP, items, coins)
-- struct Status initialize_monster (HP)
+- void start_a_new_game (Introduction and Ask user to continue from previous or not, initializing the user_status)
+- void countine_a_game (loading the user_status)
 - void exit
