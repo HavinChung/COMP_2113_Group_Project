@@ -11,9 +11,18 @@ int main(){
     ifstream monster_file ("monster.txt");
 
     if (monster_file.is_open()){
-        string line;
-        while (getline(monster_file, line)){
-            cout << line << endl;
+        string line1;
+        while (getline(monster_file, line1)){
+            cout << line1 << endl;
+        }
+    }
+    
+    ifstream story_file ("story.txt");
+
+    if (story_file.is_open()){
+        string line2;
+        while (getline(story_file, line2)){
+            cout << line2 << endl;
         }
     }
 
@@ -37,6 +46,7 @@ int main(){
 
     while(choice != '1' && choice != '2' && choice != '3'){
         cout << "Invalid input! please indicate your choice again!" << endl;
+        cout << "Choice: ";
         cin >> choice;
     }
     if (choice == '1'){

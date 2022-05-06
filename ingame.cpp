@@ -8,13 +8,13 @@
 using namespace std;
 
 const int MAX = 50;
-
+const int MIN = 10;
+int counter = 0;
 int rounds = 0;
 
 void save();
 void user_status();
 void monster_status();
-void remove_question(int num);
 void attack();
 void shop();
 void buy_potion();
@@ -46,59 +46,37 @@ void user_status(){
 void monster_status(){
     cout << "Monster HP: " << monster_hp <<endl;
     cout << endl;
-    if (monster_hp == 100){
-        cout << "[oooo|oooo|oooo|oooo]" << endl;
-    } 
-    else if (monster_hp == 75){
-        cout << "[oooo|oooo|oooo|----]" << endl;
-    }
-    else if (monster_hp == 50){
-        cout << "[oooo|oooo|----|----]" << endl;
-    }
-    else if (monster_hp == 25){
-        cout << "[oooo|----|----|----]" << endl;
-    }
-    else if (monster_hp == 0){
-        cout << "[----|----|----|----]" << endl;
-        cout << endl;
+    
+    if (monster_hp <= 0){
         cout << "Sphinx: You....Killed....Me" << endl;
     }  
     cout << endl;
 }
 
-void remove_question(int num){
-    question[num] = "NULL";
-    answer[num] = "NULL";
-}
 
 void attack(){
-
     srand(time(NULL));
-    int num = rand() % MAX;
-    string user_input;
+    int damage = (rand() % MAX + MIN);
+    char user_input[100];
 
-    while (question[num] == "NULL"){
-        int num = rand() % MAX;
-    }
-
-    if (question[num] != "NULL"){
-        cout << question[num] << endl;
+    if (question[counter] != "NULL"){
+        cout << question[counter] << endl;
         cout << "Answer: " << endl;
-        getline(cin, user_input);
-        cout << endl;
+        cin.getline(user_input, 100);
+        cin.getline(user_input, 100);
 
-        if (user_input == answer[num]){
+        if (user_input == answer[counter]){
             cout << "Correct!" << endl;
-            cout << "Attack the monster!! (-25)" << endl;
-            monster_hp -= 25;
+            cout << "Attack the monster!! " << "(-" << damage << ")" << endl;
+            monster_hp -= damage;
             monster_status();
             cout << endl;
-            remove_question(num);
+            counter++;
         }
 
-        else if (user_input != answer[num]){
+        else if (user_input != answer[counter]){
             cout << "Wrong Answer!" << endl;
-            cout << "The answer was " << answer[num] << endl;
+            cout << "The answer was " << answer[counter] << endl;
             cout << "Monster have attacked you!! (-5)" << endl;
             hp -= 5;
             user_status();
@@ -112,7 +90,7 @@ void attack(){
 }
 
 void shop(){
-    if (monster_hp == 0){
+    if (monster_hp <= 0){
         monster_hp = 100;
     }
 
@@ -205,14 +183,22 @@ void win(){
 
 void victory(){
     cout << "VICTORY!!!" << endl;
+
+    ifstream trophy ("trophy.txt");
+    if (trophy.is_open()){
+        string line;
+        while (getline(trophy, line)){
+            cout << line << endl;
+        }
+    }
 }
 
 
 void battle(){
     char input;
-    cout << "You have encountered the Sphinx" << endl;
+    cout << "You have encountered the Monster" << endl;
 
-    while (hp != 0 && monster_hp != 0){
+    while (hp != 0 && monster_hp > 0){
         cout << "Please choose from options below: (Enter a Number)" << endl;
         cout << "| 1. Attack                   |" << endl;
         cout << "| 2. Use Potion               |" << endl;
@@ -245,7 +231,7 @@ void battle(){
         die();
     }
 
-    else if (monster_hp == 0){
+    else if (monster_hp <= 0){
         win();
         rounds++;
     }
