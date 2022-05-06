@@ -46,16 +46,16 @@ void monster_status(){
     if (monster_hp == 100){
         cout << "[oooo|oooo|oooo|oooo]" << endl;
     } 
-    if (monster_hp == 75){
+    else if (monster_hp == 75){
         cout << "[oooo|oooo|oooo|----]" << endl;
     }
-    if (monster_hp == 50){
+    else if (monster_hp == 50){
         cout << "[oooo|oooo|----|----]" << endl;
     }
-    if (monster_hp == 25){
+    else if (monster_hp == 25){
         cout << "[oooo|----|----|----]" << endl;
     }
-    if (monster_hp == 0){
+    else if (monster_hp == 0){
         cout << "[----|----|----|----]" << endl;
         cout << "Sphinx: You....Killed....Me" << endl;
     }  
@@ -83,17 +83,13 @@ void attack(){
         cout << "Answer: " << endl;
         cin >> user_input;
 
-        if (user_input == "Skip"){
-            cout << endl;
-            attack();
-        }
-
-        else if (user_input == answer[num]){
+        if (user_input == answer[num]){
             question[num] = " ";
             answer[num] = " ";
             cout << "Correct!" << endl;
             cout << "Attack the monster!! (-25)" << endl;
             monster_hp -= 25;
+            monster_status();
             cout << endl;
         }
 
@@ -101,6 +97,7 @@ void attack(){
             cout << "Wrong Answer!" << endl;
             cout << "Monster have attacked you!! (-5)" << endl;
             hp -= 5;
+            user_status();
             cout << endl;
         }
 
@@ -210,7 +207,6 @@ void battle(){
             cin >> input;
 
             if (input == "1"){
-                cout << "Please enter 'Skip' if you want to skip the question!" << endl;
                 attack();
             }
 
