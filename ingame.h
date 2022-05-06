@@ -13,6 +13,8 @@ void monster_status();
 void reset_status();
 void attack();
 void shop();
+void buy_potion();
+void use_potion();
 void die();
 void win();
 void victory();

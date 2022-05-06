@@ -15,6 +15,8 @@ void monster_status();
 void reset_status();
 void attack();
 void shop();
+void buy_potion();
+void use_potion();
 void die();
 void win();
 void victory();
@@ -122,33 +124,38 @@ void shop(){
 
     cin >> option;
 
+    while(option != "1" && option != "2" && option != "3"){
+        cout << "Invalid input! please indicate your choice again!" << endl;
+        cin >> option;
+    }
+
     if (option == "1"){
         battle();
     }
 
     else if (option == "2"){
-        if (num_of_coins == 0){
-            cout << "Not Enough Coin!!" << endl;
-            shop();
-        }
-        else if (num_of_coins > 0){
-            cout << "Purchase Successful" << endl;
-            num_of_coins -= 1;
-            num_of_potion += 1;
-            cout << "Number of Potions: " << num_of_potion << endl;
-            shop();
-        }
+        buy_potion();
     }
 
     else if (option == "3"){
         exit_1();
     }
 
-    else if(option != "1" && option != "2" && option != "3"){
-        cout << "Invalid Choice" << endl;
+}
+
+void buy_potion(){
+    if (num_of_coins == 0){
+        cout << "Not Enough Coin!!" << endl;
         shop();
     }
 
+    else if (num_of_coins > 0){
+        cout << "Purchase Successful" << endl;
+        num_of_coins -= 1;
+        num_of_potion += 1;
+        cout << "Number of Potions: " << num_of_potion << endl;
+        shop();
+    }
 }
 
 void use_potion(){
