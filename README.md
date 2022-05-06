@@ -10,18 +10,19 @@ Havin Chung (3035729772)__
 __Login required and choices are given:__
 1) Start new game
 2) Load game
-3) Leaderboard
+3) save game and exit
 
 > "You need to defeat the Boss monster by answering the questions."
 
 __Boss have 25 HP and every time you answer correctly:__ <br/>
-- HP: -5 & Score: +100 points
+- HP: -5
 
 __Each boss would give you 5 questions based on specific field of study__
 1) Math
 2) Comp
 3) History
 4) Physics
+5) Biology
 
 __4 Rounds in total:__
 
@@ -33,8 +34,7 @@ __HP system:__
 - If HP get to 0 start from town and redo the round you failed
 
 __Items:__
-1) Skip question (replace one with another question)
-2) Healing potion (Heal 5 HP)
+1) Healing potion (Heal 5 HP)
 
 __Every round you have two choices: (need to be done in 1.5 mins)__
 1) Answer questions
@@ -52,13 +52,13 @@ __Rewards:__
 ## File Content:
 - cpp file for main menu and main game
 - cpp file in game (fight, town, HP system)
-- cpp file for pregame (Load, Save, Continue, Leaderboard)
-- txt files save the progress (name, score, round, personal info)
+- cpp file for pregame (Load, Save, Continue)
+- txt files save the progress (user_status, score, round)
 - make file
 - header file
 
 ## Code Requirement:
-1) Random generation: choosing random questions from 40 questions per round
+1) Random generation: Ramdom damage to the boss
 2) Gaming status: save progress in txt file use <fstream>
 3) The score and and will be stored in user_status.txt
 4) Save to txt file, the progress round, no. of items in text, score
