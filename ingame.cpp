@@ -7,6 +7,8 @@
 
 using namespace std;
 
+const int MAX = 50;
+
 int rounds = 0;
 
 void save();
@@ -70,8 +72,7 @@ void reset_status(){
 }
 
 void attack(){
-    int MIN = 1;
-    int MAX = 50;
+
     srand(time(NULL));
     int num = rand() % MAX;
     string user_input;
@@ -82,8 +83,9 @@ void attack(){
 
     if (question[num] != " "){
         cout << question[num] << endl;
-        cout << "Answer: " << endl;
+        cout << "Answer: ";
         cin >> user_input;
+        cout << endl;
 
         if (user_input == answer[num]){
             question[num] = " ";
@@ -97,6 +99,7 @@ void attack(){
 
         else if (user_input != answer[num]){
             cout << "Wrong Answer!" << endl;
+            cout << "The answer was " << answer[num] << endl;
             cout << "Monster have attacked you!! (-5)" << endl;
             hp -= 5;
             user_status();
@@ -200,39 +203,45 @@ void victory(){
 
 
 void battle(){
-    if (rounds < 5){
-        cout << "You have encountered the Sphinx" << endl;
-        while (hp != 0 && monster_hp != 0){
-            cout << endl;
-            cout << "Please choose from options below: (Enter a Number)" << endl;
-            cout << "| 1. Attack                   |" << endl;
-            cout << "| 2. Use Potion               |" << endl;
-            cout << "| 3. Save and Exit            |" << endl;
-            cout << endl;
-            string input;
+    string input;
+    cout << "You have encountered the Sphinx" << endl;
+
+    while (hp != 0 && monster_hp != 0){
+        cout << "Please choose from options below: (Enter a Number)" << endl;
+        cout << "| 1. Attack                   |" << endl;
+        cout << "| 2. Use Potion               |" << endl;
+        cout << "| 3. Save and Exit            |" << endl;
+        cout << "Choice: ";
+        cin >> input;
+        cout << endl;
+
+        while(input != "1" && input != "2" && input != "3"){
+            cout << "Invalid input! please indicate your choice again!" << endl;
+            cout << "Choice: ";
             cin >> input;
-
-            if (input == "1"){
-                attack();
-            }
-
-            else if (input == "2"){
-                use_potion();
-            }
-
-            else if (input == "3"){
-                exit_1();
-                break;
-            }
+            cout << endl;
         }
 
-        if (hp == 0){
-            die();
+        if (input == "1"){
+            attack();
         }
 
-        else if (monster_hp == 0){
-            win();
-            rounds++;
+        else if (input == "2"){
+            use_potion();
         }
+
+        else if (input == "3"){
+            exit_1();
+            break;
+        }
+    }
+
+    if (hp == 0){
+        die();
+    }
+
+    else if (monster_hp == 0){
+        win();
+        rounds++;
     }
 }
