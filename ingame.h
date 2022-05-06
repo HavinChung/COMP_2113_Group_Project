@@ -1,6 +1,6 @@
 #ifndef ingame_H
 #define ingame_H
-
+#include <string>
 
 extern int rounds;
 extern std::string* question;
@@ -12,13 +12,11 @@ void save();
 void user_status();
 void monster_status();
 void reset_status();
-int random_num();
 void attack();
 void shop();
 void die();
 void win();
 void victory();
-void options();
 void battle();
 
 #endif
