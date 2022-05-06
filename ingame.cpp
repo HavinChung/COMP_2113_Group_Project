@@ -32,7 +32,6 @@ void save(){
 }
 
 void user_status(){
-    cout << endl;
     cout << "HP: " << hp << endl;
     cout << "Potions: " << num_of_potion << endl;
     cout << "Coins: " << num_of_coins << endl;
@@ -41,8 +40,8 @@ void user_status(){
 }
 
 void monster_status(){
-    cout << endl;
     cout << "Monster HP: " << monster_hp <<endl;
+    cout << endl;
     if (monster_hp == 100){
         cout << "[oooo|oooo|oooo|oooo]" << endl;
     } 
@@ -57,6 +56,7 @@ void monster_status(){
     }
     else if (monster_hp == 0){
         cout << "[----|----|----|----]" << endl;
+        cout << endl;
         cout << "Sphinx: You....Killed....Me" << endl;
     }  
     cout << endl;
@@ -111,8 +111,9 @@ void shop(){
     string option;
 
     reset_status();
-    cout << endl;
     cout << "Hello Adventurer! Welcome to the town!" << endl;
+    cout << "USER STATUS:" << endl;
+    user_status();
     cout << "Please choose from options below: (Enter a Number)" << endl;
     cout << "| 1. Start Adventure          |" << endl;
     cout << "| 2. Buy Potion (1 coin)      |" << endl;
@@ -125,12 +126,12 @@ void shop(){
         battle();
     }
 
-    if (option == "2"){
+    else if (option == "2"){
         if (num_of_coins == 0){
             cout << "Not Enough Coin!!" << endl;
             shop();
         }
-        if (num_of_coins > 0){
+        else if (num_of_coins > 0){
             cout << "Purchase Successful" << endl;
             num_of_coins -= 1;
             num_of_potion += 1;
@@ -139,11 +140,11 @@ void shop(){
         }
     }
 
-    if (option == "3"){
+    else if (option == "3"){
         exit_1();
     }
 
-    if(option != "1" && option != "2" && option != "3"){
+    else if(option != "1" && option != "2" && option != "3"){
         cout << "Invalid Choice" << endl;
         shop();
     }
@@ -157,13 +158,12 @@ void use_potion(){
         num_of_potion--;
     }
 
-    if (num_of_potion == 0){
+    else if (num_of_potion == 0){
         cout << "Not enough potion!!" << endl;
     }
 }
 
 void die(){
-    cout << endl;
     cout << "The player have slained by the monster!" << endl;
     cout << "Returning to the town..." << endl;
     cout << endl;
@@ -171,7 +171,6 @@ void die(){
 }
 
 void win(){
-    cout << endl;
     cout << "Conguratulation! You have slained the monster!" << endl;
     cout << "Returning to the town..." << endl;
     cout << endl;
@@ -210,11 +209,11 @@ void battle(){
                 attack();
             }
 
-            if (input == "2"){
+            else if (input == "2"){
                 use_potion();
             }
 
-            if (input == "3"){
+            else if (input == "3"){
                 exit_1();
                 break;
             }
@@ -224,7 +223,7 @@ void battle(){
             die();
         }
 
-        if (monster_hp == 0){
+        else if (monster_hp == 0){
             win();
             rounds++;
         }
