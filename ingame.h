@@ -11,6 +11,7 @@ void save();
 void user_status();
 void monster_status();
 void reset_status();
+void remove_question(int num);
 void attack();
 void shop();
 void buy_potion();

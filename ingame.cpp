@@ -15,6 +15,7 @@ void save();
 void user_status();
 void monster_status();
 void reset_status();
+void remove_question(int num);
 void attack();
 void shop();
 void buy_potion();
@@ -71,6 +72,11 @@ void reset_status(){
     monster_hp = 100;
 }
 
+void remove_question(int num){
+    question[num] = "NULL";
+    answer[num] = "NULL";
+}
+
 void attack(){
 
     srand(time(NULL));
@@ -81,20 +87,19 @@ void attack(){
         int num = rand() % MAX;
     }
 
-    if (question[num] != " "){
+    if (question[num] != "NULL"){
         cout << question[num] << endl;
-        cout << "Answer: ";
+        cout << "Answer: " << endl;
         cin >> user_input;
         cout << endl;
 
         if (user_input == answer[num]){
-            question[num] = "NULL";
-            answer[num] = "NULL";
             cout << "Correct!" << endl;
             cout << "Attack the monster!! (-25)" << endl;
             monster_hp -= 25;
             monster_status();
             cout << endl;
+            remove_question(num);
         }
 
         else if (user_input != answer[num]){

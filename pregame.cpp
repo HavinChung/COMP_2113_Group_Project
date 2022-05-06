@@ -53,12 +53,6 @@ void begin_new_game(){
     fout << hp << " " << num_of_coins << ' ' << num_of_potion << ' ' << monster_hp << ' ' << rounds; 
     fout.close();
     cout << endl;
-    cout << "Your HP: " << hp << endl;
-    cout << "Your number of coins: " <<num_of_coins << endl;
-    cout << "Your number of potion: "<< num_of_potion << endl;
-    cout << "Monster HP: " << monster_hp << endl;
-    cout << "Round: " << rounds + 1 << endl;
-    cout << endl;
 
     initialize_question();
     initialize_answer();
@@ -70,12 +64,6 @@ void continue_game(){
     fin.open("user_status.txt");
     fin >> hp >> num_of_coins >> num_of_potion >> monster_hp >> rounds;
     fin.close();
-    cout << endl;
-    cout << "Your HP: " << hp << endl;
-    cout << "Your number of coins: " <<num_of_coins << endl;
-    cout << "Your number of potion: "<< num_of_potion << endl;
-    cout << "Monster HP: " << monster_hp << endl;
-    cout << "Round: " << rounds + 1 << endl;
     cout << endl;
 
     initialize_question();
