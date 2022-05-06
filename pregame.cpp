@@ -10,6 +10,38 @@ int num_of_coins = 0;
 int num_of_potion = 0;
 int monster_hp = 100;
 
+string* question = new string[50];
+string* answer = new string[50];
+
+
+void initialize_question(){
+    ifstream file ("Question.txt");
+
+    if (file.is_open()){
+        string line;
+        int i = 0;
+        while (getline(file, line)){
+            question[i] = line;
+            i++;
+        }
+    }
+    file.close();
+}
+
+void initialize_answer(){
+    ifstream file ("Answer.txt");
+
+    if (file.is_open()){
+        string line;
+        int i = 0;
+        while (getline(file, line)){
+            answer[i] = line;
+            i++;
+        }
+    }
+    file.close();
+}
+
 void begin_new_game(){
     ofstream fout;
     fout.open("user_status.txt");
@@ -25,6 +57,8 @@ void begin_new_game(){
     cout << "Monster HP: " << monster_hp << endl;
     cout << "Round: " << rounds + 1 << endl;
 
+    initialize_question();
+    initialize_answer();
     shop();
 }
 

@@ -8,51 +8,18 @@
 using namespace std;
 
 int rounds = 0;
-string* question = new string[50];
-string* answer = new string[50];
 
-void initialize_question();
-void initialize_answer();
 void save();
 void user_status();
 void monster_status();
 void reset_status();
-int random_num();
 void attack();
 void shop();
 void die();
 void win();
 void victory();
-void options();
 void battle();
 
-void initialize_question(){
-    ifstream file ("Question.txt");
-
-    if (file.is_open()){
-        string line;
-        int i = 0;
-        while (getline(file, line)){
-            question[i] = line;
-            i++;
-        }
-    }
-    file.close();
-}
-
-void initialize_answer(){
-    ifstream file ("Answer.txt");
-
-    if (file.is_open()){
-        string line;
-        int i = 0;
-        while (getline(file, line)){
-            answer[i] = line;
-            i++;
-        }
-    }
-    file.close();
-}
 
 void save(){
     ofstream file("user_status.txt");
@@ -96,22 +63,15 @@ void reset_status(){
     monster_hp = 100;
 }
 
-int random_num(){
+void attack(){
     int MIN = 1;
     int MAX = 50;
     srand(time(NULL));
-
     int num = rand() % MAX;
-
-    return num;
-}
-
-void attack(){
-    int num = random_num();
     string user_input;
 
     while (question[num] == " "){
-        int num = random_num();
+        int num = rand() % MAX;
     }
 
     if (question[num] != " "){
@@ -226,33 +186,30 @@ void victory(){
     cout << "VICTORY!!!" << endl;
 }
 
-void options(){
-    string input;
-    cout << "Please choose from options below: (Enter a Number)" << endl;
-    cout << "| 1. Attack                   |" << endl;
-    cout << "| 2. Use Potion               |" << endl;
-    cout << "| 3. Save and Exit            |" << endl;
-
-    cin >> input;
-
-    if (input == "1"){
-        attack();
-    }
-
-    if (input == "2"){
-        use_potion();
-    }
-
-    if (input == "3"){
-        exit_1();
-    }
-}
 
 void battle(){
     if (rounds < 5){
         cout << "You have encountered the Sphinx" << endl;
         while (hp != 0 && monster_hp != 0){
-            options();
+            cout << "Please choose from options below: (Enter a Number)" << endl;
+            cout << "| 1. Attack                   |" << endl;
+            cout << "| 2. Use Potion               |" << endl;
+            cout << "| 3. Save and Exit            |" << endl;
+            string input;
+            cin >> input;
+
+            if (input == "1"){
+                attack();
+            }
+
+            if (input == "2"){
+                use_potion();
+            }
+
+            if (input == "3"){
+                exit_1();
+                break;
+            }
         }
 
         if (hp == 0){

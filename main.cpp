@@ -7,8 +7,6 @@
 using namespace std;
 
 int main(){
-    void initialize_question();
-    void initialize_answer();
     
     ifstream monster_file ("monster.txt");
 
