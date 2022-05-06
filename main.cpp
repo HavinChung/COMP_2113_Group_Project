@@ -28,10 +28,12 @@ int main(){
     cout << "2. Load Game"<< endl;
     cout << "3. Exit the game."<< endl;
     cout << "Please enter you choice.(1/2/3) "<< endl;
-    cout << endl;
-
+    cout << "Choice: " << endl;
     char choice;
     cin >> choice;
+    cout << endl;
+
+
 
     while(choice != '1' && choice != '2' && choice != '3'){
         cout << "Invalid input! please indicate your choice again!" << endl;
