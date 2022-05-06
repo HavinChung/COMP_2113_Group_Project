@@ -59,33 +59,28 @@ void attack(){
     int damage = (rand() % MAX + MIN);
     char user_input[100];
 
-    if (question[counter] != "NULL"){
-        cout << question[counter] << endl;
-        cout << "Answer: " << endl;
-        cin.getline(user_input, 100);
-        cin.getline(user_input, 100);
+    cout << question[counter] << endl;
+    cout << "Answer: " << endl;
+    cin.getline(user_input, 100);
+    cin.getline(user_input, 100);
 
-        if (user_input == answer[counter]){
-            cout << "Correct!" << endl;
-            cout << "Attack the monster!! " << "(-" << damage << ")" << endl;
-            monster_hp -= damage;
-            monster_status();
-            cout << endl;
-            counter++;
-        }
-
-        else if (user_input != answer[counter]){
-            cout << "Wrong Answer!" << endl;
-            cout << "The answer was " << answer[counter] << endl;
-            cout << "Monster have attacked you!! (-5)" << endl;
-            hp -= 5;
-            user_status();
-            cout << endl;
-        }
-
-
+    if (user_input == answer[counter]){
+        cout << "Correct!" << endl;
+        cout << "Attack the monster!! " << "(-" << damage << ")" << endl;
+        monster_hp -= damage;
+        monster_status();
+        cout << endl;
+        counter++;
     }
 
+    else if (user_input != answer[counter]){
+        cout << "Wrong Answer!" << endl;
+        cout << "The answer was " << answer[counter] << endl;
+        cout << "Monster have attacked you!! (-5)" << endl;
+        hp -= 5;
+        user_status();
+        cout << endl;
+    }
 
 }
 

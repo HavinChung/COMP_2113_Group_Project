@@ -5,8 +5,6 @@
 extern int rounds;
 
 
-void initialize_question();
-void initialize_answer();
 void save();
 void user_status();
 void monster_status();

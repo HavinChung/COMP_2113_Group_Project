@@ -11,6 +11,8 @@ extern int monster_hp;
 extern std::string* question;
 extern std::string* answer;
 
+void initialize_question();
+void initialize_answer();
 void begin_new_game();
 void continue_game();
 void exit_1();
