@@ -14,7 +14,6 @@ int rounds = 0;
 void save();
 void user_status();
 void monster_status();
-void reset_status();
 void remove_question(int num);
 void attack();
 void shop();
@@ -67,11 +66,6 @@ void monster_status(){
     cout << endl;
 }
 
-void reset_status(){
-    hp = 20;
-    monster_hp = 100;
-}
-
 void remove_question(int num){
     question[num] = "NULL";
     answer[num] = "NULL";
@@ -90,7 +84,7 @@ void attack(){
     if (question[num] != "NULL"){
         cout << question[num] << endl;
         cout << "Answer: " << endl;
-        cin >> user_input;
+        getline(cin, user_input);
         cout << endl;
 
         if (user_input == answer[num]){
@@ -118,8 +112,15 @@ void attack(){
 }
 
 void shop(){
-    char choice;
+    if (monster_hp == 0){
+        monster_hp = 100;
+    }
 
+    if (hp == 0){
+        hp = 20;
+    }
+
+    char choice;
     cout << "Hello Adventurer! Welcome to the town!" << endl;
     cout << "USER STATUS:" << endl;
     user_status();
@@ -242,12 +243,10 @@ void battle(){
 
     if (hp == 0){
         die();
-        reset_status();
     }
 
     else if (monster_hp == 0){
         win();
-        reset_status();
         rounds++;
     }
 
