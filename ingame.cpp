@@ -12,7 +12,6 @@ const int MIN = 10;
 int counter = 0;
 int rounds = 0;
 
-void save();
 void user_status();
 void monster_status();
 void attack();
@@ -24,16 +23,6 @@ void win();
 void victory();
 void battle();
 
-
-void save(){
-    ofstream file("user_status.txt");
-
-    if (file.is_open()){
-        file << hp << " " << num_of_coins << " " << num_of_potion << " " << monster_hp;
-    }
-
-    file.close();
-}
 
 void user_status(){
     cout << "HP: " << hp << endl;
@@ -179,10 +168,11 @@ void win(){
 void victory(){
     cout << "VICTORY!!!" << endl;
 
-    ifstream trophy ("trophy.txt");
-    if (trophy.is_open()){
+    ifstream end_file ("trophy.txt");
+    
+    if (end_file.is_open()){
         string line;
-        while (getline(trophy, line)){
+        while (getline(end_file, line)){
             cout << line << endl;
         }
     }

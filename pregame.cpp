@@ -48,9 +48,10 @@ void begin_new_game(){
     num_of_potion = 0;
     monster_hp = 100;
     rounds = 0;
+    counter = 0;
     ofstream fout;
     fout.open("user_status.txt");
-    fout << hp << " " << num_of_coins << ' ' << num_of_potion << ' ' << monster_hp << ' ' << rounds; 
+    fout << hp << " " << num_of_coins << ' ' << num_of_potion << ' ' << monster_hp << ' ' << rounds << ' ' << counter; 
     fout.close();
     cout << endl;
 
@@ -62,7 +63,7 @@ void begin_new_game(){
 void continue_game(){
     ifstream fin;
     fin.open("user_status.txt");
-    fin >> hp >> num_of_coins >> num_of_potion >> monster_hp >> rounds;
+    fin >> hp >> num_of_coins >> num_of_potion >> monster_hp >> rounds >> counter;
     fin.close();
     cout << endl;
 
@@ -74,7 +75,7 @@ void exit_1(){
     cout << "Your status has been saved, see you next time!!!";
     ofstream fout;
     fout.open("user_status.txt");
-    fout << hp << " " << num_of_coins << ' ' << num_of_potion << ' ' << monster_hp << ' ' << rounds; 
+    fout << hp << " " << num_of_coins << ' ' << num_of_potion << ' ' << monster_hp << ' ' << rounds << ' ' << counter; 
     fout.close();
 }
 

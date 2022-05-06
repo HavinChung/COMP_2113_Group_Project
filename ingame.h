@@ -3,9 +3,8 @@
 
 
 extern int rounds;
+extern int counter;
 
-
-void save();
 void user_status();
 void monster_status();
 void attack();

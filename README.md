@@ -12,7 +12,7 @@ __Login required and choices are given:__
 2) Load game
 3) Leaderboard
 
-> "You need to defeat the Boss monster by answering the questions in capital letter or number."
+> "You need to defeat the Boss monster by answering the questions."
 
 __Boss have 25 HP and every time you answer correctly:__ <br/>
 - HP: -5 & Score: +100 points
