@@ -10,18 +10,18 @@ Havin Chung (3035729772)__
 __Login required and choices are given:__
 1) Start new game
 2) Load game
-3) Leaderboard
 
 > "You need to defeat the Boss monster by answering the questions."
 
-__Boss have 25 HP and every time you answer correctly:__ <br/>
-- HP: -5 & Score: +100 points
+__Boss will be given random damage and every time you answer correctly:__ <br/>
+- HP: -5 
 
 __Each boss would give you 5 questions based on specific field of study__
 1) Math
 2) Comp
 3) History
 4) Physics
+5) Biology
 
 __4 Rounds in total:__
 
@@ -29,25 +29,22 @@ Round 1 -> Town -> Round 2 -> Town -> Round 3 -> Town -> Round 4
 
 __HP system:__
 - Start with 20 HP
-- Wrong answer or Exceed time limits deduct 5 HP (Score: -20 points)
+- Wrong answer deduct 5 HP 
 - If HP get to 0 start from town and redo the round you failed
 
 __Items:__
-1) Skip question (replace one with another question)
-2) Healing potion (Heal 5 HP)
+1) Healing potion (Heal 5 HP)
 
 __Every round you have two choices: (need to be done in 1.5 mins)__
 1) Answer questions
 2) Use item
 
 __Town:__
-1) Heal to 20 HP for Free
-2) Buy item
-3) Save progress
+1) Buy item
+2) Save progress
 
 __Rewards:__
 1) Well done trophy
-2) Score
 
 ## File Content:
 - cpp file for main menu and main game
