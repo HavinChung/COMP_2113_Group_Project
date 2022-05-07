@@ -63,39 +63,38 @@ __Rewards:__
 
 ## Files:
 
-introduction.txt
-
+Answer.txt
+Question.txt
 monster.txt
-  
-question.txt
-
-answer.txt
-  
-user_status.txt
-
-inGame.cpp, inGame.h
-
+trophy.txt
+story.txt
+video link.docx
+ingame.cpp
+pregame.cpp
+ingame.h
+pregame.h
 main.cpp
-
-preGame.cpp, preGame.h
-
-Makefile
+make file
   
 ## Functions:
 
 __inGame.cpp__
-- void save_quit
-- void read_questions (read from txt file in random)
-- void read_answer
-- bool fight (whether answered correct or not)
-- void display_status (display hp, items, and coins)
-- void shop (display coins, items, price of items, hp, go to next round)
-- void useItem
-- bool win (if counter == 4, game win)
-- bool die (if hp == 0, return shop)
+void user_status()  //show the user status
+void monster_status() //show the hp of the monster
+void attack () // show the question and call the player to answer
+void shop () // go to shop and buy items
+void buy_potion() // buy potion 
+void use_potion() // use potion and heal hp 
+void die() // show die when player's hp = 0
+void win() // show the statement and get 1 coin
+void victory() //show the statement from the .txt
+void battle() // different choices when facing the Monster
+  
   
 __preGame.cpp__
 - Status initialize_user (HP, items, coins, boss hp, number of round)
+- void initialize_question() // import the question from question.txt to a dynamic array
+- void initalize_answer() // mport the answer from answer.txt to a dynamic array
 - void begin (Introduction and Ask user to continue from previous or not)
 - void load game
 - void exit
