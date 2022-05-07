@@ -95,9 +95,7 @@ __inGame.cpp__
 - bool die (if hp == 0, return shop)
   
 __preGame.cpp__
-- void write_file
-- void read_file (read status of user)
+- Status initialize_user (HP, items, coins, boss hp, number of round)
 - void begin (Introduction and Ask user to continue from previous or not)
-- struct Status initialize_user (HP, items, coins)
-- struct Status initialize_monster (HP)
+- void load game
 - void exit
