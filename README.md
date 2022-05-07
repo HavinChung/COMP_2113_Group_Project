@@ -55,11 +55,11 @@ __Rewards:__
 - header file
 
 ## Code Requirement:
-1) Random generation: choosing random questions from 40 questions per round
-2) Gaming status: save progress in txt file use <fstream>
-3) The score and and will be stored in user_status.txt
+1) Random generation: random damage to the Monster
+2) Gaming status: save user_status including the hp, coins, round etc. in txt file use <fstream>
+3) user_status will be stored in user_status.txt
 4) Save to txt file, the progress round, no. of items in text, score
-5) Three C++ programs, four txt files, one header file and one make file
+5) Three C++ programs, five txt files, two header file and one make file
 
 ## Files:
 
@@ -79,16 +79,16 @@ make file
 ## Functions:
 
 __inGame.cpp__
-void user_status()  //show the user status
-void monster_status() //show the hp of the monster
-void attack () // show the question and call the player to answer
-void shop () // go to shop and buy items
-void buy_potion() // buy potion 
-void use_potion() // use potion and heal hp 
-void die() // show die when player's hp = 0
-void win() // show the statement and get 1 coin
-void victory() //show the statement from the .txt
-void battle() // different choices when facing the Monster
+- void user_status()  //show the user status
+- void monster_status() //show the hp of the monster
+- void attack () // show the question and call the player to answer
+- void shop () // go to shop and buy items
+- void buy_potion() // buy potion 
+- void use_potion() // use potion and heal hp 
+- void die() // show die when player's hp = 0
+- void win() // show the statement and get 1 coin
+- void victory() //show the statement from the .txt
+- void battle() // different choices when facing the Monster
   
   
 __preGame.cpp__
