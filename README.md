@@ -7,7 +7,7 @@ Li Ka Lam (Andy) (3035767499) <br/>
 Havin Chung (3035729772)__
 
 ## Game rules:
-__Login required and choices are given:__
+__choices are given:__
 1) Start new game
 2) Load game
 
